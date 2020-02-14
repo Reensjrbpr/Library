@@ -9,6 +9,7 @@ header{
   position: fixed;
   width: 100%;
   height: 100px;
+  min-width: 435px;
   border-bottom: 1px solid black;
   background-color: #f13c3c;
   box-shadow: 0 5px 8px #888888;
@@ -34,15 +35,33 @@ h1{
   position: relative;
   top: 110px;
   display: grid;
-  grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+  grid-template-columns: repeat(3, 325px);
+  justify-items: center;
+  justify-content: space-evenly;
+  grid-auto-flow: row;
   grid-gap: 40px;
   padding: 20px;
 }
 
 .books{
   height: 400px;
+  min-width: 325px;
   border: 1px solid black;
   border-radius: 10px;
+}
+
+.remove{
+  position: relative;
+  top: 350px;
+  float: right;
+  margin-right: 10px;
+  padding: 10px;
+  width: 60px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2px;
+  color: #fff8ec;
+  background-color: #f13c3c;
 }
 
 .books:hover, #newBook:hover{
@@ -50,9 +69,10 @@ h1{
 }
 
 footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  min-width: 435px;
 }
 
 #newBook{
@@ -80,6 +100,7 @@ footer{
   height: 600px;
   padding: 30px;
   border: 1px solid black;
+  border-radius: 5px;
   background-color: #fff8ec;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -104,6 +125,7 @@ footer{
   text-align: center;
   line-height: 30px;
   border: 1px solid black;
+  user-select: none;
 }
 
 #exit:hover{
