@@ -1,6 +1,6 @@
 //Create array to store book objects and function to add books to library
 
-let library = [1];
+let library = [1, 2, 3, 4, 5, 6, 7, 8];
 
 function Book(){
     //constructor
@@ -10,7 +10,6 @@ function addBook(){
 
 }
 
-
 //Generate book display
 function render(library){
 
@@ -18,8 +17,15 @@ function render(library){
 
     for(let i = 0; i < library.length; i++){
         const book = document.createElement('div');
+        const removeBook = document.createElement('div');
+
         book.classList.add('books');
+        removeBook.classList.add('remove');
+
+        removeBook.textContent = 'Remove';
+        
         bookcase.appendChild(book);
+        book.appendChild(removeBook);
     }
 }
 
