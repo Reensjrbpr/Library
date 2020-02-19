@@ -64,7 +64,7 @@ h1{
   background-color: #f13c3c;
 }
 
-.books:hover, #newBook:hover{
+.books:hover, #newBook:hover, .remove:hover{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -131,4 +131,13 @@ footer{
 #exit:hover{
   color: red;
   background-color: gray;
+}
+
+#submit{
+  float: left;
+  width: 60px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: green;
 }

@@ -2,8 +2,12 @@
 
 let library = [1, 2, 3, 4, 5, 6, 7, 8];
 
-function Book(){
+function Book(title, author, pages, read){
     //constructor
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 }
 
 function addBook(){
