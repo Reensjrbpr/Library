@@ -1,17 +1,13 @@
 //Create array to store book objects and function to add books to library
 
-let library = [1, 2, 3, 4, 5, 6, 7, 8];
+let library = [];
 
+//Constructor
 function Book(title, author, pages, read){
-    //constructor
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-}
-
-function addBook(){
-
 }
 
 //Generate book display
@@ -19,7 +15,7 @@ function render(library){
 
     const bookcase = document.querySelector('#library');
 
-    for(let i = 0; i < library.length; i++){
+    for(let i = library.length; i < library.length + 1; i++){
         const book = document.createElement('div');
         const removeBook = document.createElement('div');
 
@@ -33,7 +29,7 @@ function render(library){
     }
 }
 
-render(library);
+//render(library);
 
 
 //Add book button
@@ -52,4 +48,22 @@ exit.addEventListener('click', () => {
     const hideForm = document.querySelector('#overlay');
 
     hideForm.style.cssText = 'display: none;';
+});
+
+//Submit button on form
+const submit = document.querySelector('#submit');
+
+submit.addEventListener('click', () => {
+    const newTitle = document.querySelector('#title');
+    const newAuthor = document.querySelector('#author');
+    const newPages = document.querySelector('#pages');
+    //const newRead = document.querySelector('#read'); **To be continued :D
+    const clear = document.querySelector('#overlay');
+
+    const newBook = new Book(newTitle.textContent, newAuthor.textContent, newPages.textContent, "no");
+
+    library.push(newBook);
+
+    clear.style.cssText = 'display: none;';
+    render(library);
 });
