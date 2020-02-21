@@ -1,13 +1,15 @@
 //Create array to store book objects and function to add books to library
 
 let library = [];
+let index;
 
 //Constructor
-function Book(title, author, pages, read){
+function Book(title, author, pages, read, index){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.index = index;
 }
 
 //Generate book display
@@ -59,10 +61,14 @@ submit.addEventListener('click', () => {
     const newPages = document.querySelector('#pages');
     //const newRead = document.querySelector('#read'); **To be continued :D
     const clear = document.querySelector('#overlay');
-
-    const newBook = new Book(newTitle.textContent, newAuthor.textContent, newPages.textContent, "no");
-
+ 
+    if(typeof index != 'number') index = 0;
+    
+    const newBook = new Book(newTitle.textContent, newAuthor.textContent, newPages.textContent, "no", index);
+    
     library.push(newBook);
+
+    index++;
 
     clear.style.cssText = 'display: none;';
     render(library);
