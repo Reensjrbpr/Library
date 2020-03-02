@@ -4,13 +4,15 @@ let library = [];
 let index;
 
 //Constructor
-function Book(title, author, pages, read, index){
+function addBook(title, author, pages, read, index){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
     this.index = index;
 }
+
+let j = 0;
 
 //Generate book display
 function render(library){
@@ -20,19 +22,24 @@ function render(library){
     for(let i = library.length; i < library.length + 1; i++){
         const book = document.createElement('div');
         const removeBook = document.createElement('div');
+        const bookInfo = document.createElement('div');
 
         book.classList.add('books');
         removeBook.classList.add('remove');
 
         removeBook.textContent = 'Remove';
+
+        bookInfo.innerHTML = `<p>Title: ${library[j].title}</p><br>
+                              <p>Author: ${library[j].author}</p><br>
+                              <p>Pages: ${library[j].pages}</p>`;
+        
+        j++;
         
         bookcase.appendChild(book);
         book.appendChild(removeBook);
+        book.appendChild(bookInfo);
     }
 }
-
-//render(library);
-
 
 //Add book button
 const add = document.querySelector('#newBook');
@@ -56,20 +63,27 @@ exit.addEventListener('click', () => {
 const submit = document.querySelector('#submit');
 
 submit.addEventListener('click', () => {
-    const newTitle = document.querySelector('#title');
-    const newAuthor = document.querySelector('#author');
-    const newPages = document.querySelector('#pages');
-    //const newRead = document.querySelector('#read'); **To be continued :D
+    const getTitle = document.querySelector('#title');
+    const getAuth = document.querySelector('#author');
+    const getPages = document.querySelector('#pages');
     const clear = document.querySelector('#overlay');
- 
+    
     if(typeof index != 'number') index = 0;
     
-    const newBook = new Book(newTitle.textContent, newAuthor.textContent, newPages.textContent, "no", index);
+    const newBook = new addBook(getTitle.value, getAuth.value, getPages.value, 'no', index);
     
     library.push(newBook);
 
     index++;
 
     clear.style.cssText = 'display: none;';
+
+    //Clear fields
+    getTitle.value = '';
+    getAuth.value = '';
+    getPages.value = '';
+
     render(library);
 });
+
+
