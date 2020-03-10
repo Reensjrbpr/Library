@@ -25,7 +25,9 @@ function render(library){
         const bookInfo = document.createElement('div');
 
         book.classList.add('books');
+        book.setAttribute('id', `b${library[j].index}`);
         removeBook.classList.add('remove');
+        removeBook.setAttribute('id', `${library[j].index}`);
 
         removeBook.textContent = 'Remove';
 
@@ -39,6 +41,7 @@ function render(library){
         book.appendChild(removeBook);
         book.appendChild(bookInfo);
     }
+    removeBooks();
 }
 
 //Add book button
@@ -86,4 +89,16 @@ submit.addEventListener('click', () => {
     render(library);
 });
 
+//Remove buttons
+function removeBooks(){
+    const removeBtn = document.querySelectorAll('.remove');
 
+    removeBtn.forEach((removeBtn, rm) => removeBtn.addEventListener('click', () => {
+        if(removeBtn.id == library[Number(rm)].index){
+            const bookcase = document.querySelector('#library');
+            const delBook = document.querySelector(`#b${removeBtn.id}`);
+
+            bookcase.removeChild(delBook);
+        }
+    }));
+}
